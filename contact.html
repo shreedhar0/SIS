@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/styles.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
 
     <title>Contact-SIS</title>
 </head>
@@ -16,7 +17,7 @@
 
     <nav id="Navbar" class="navbar navbar-custom navbar-expand-sm navbar-dark">
         <div class="container-fluid">
-            <a href="index.html" class="navbar-brand h1 brand">SIS</a>
+            <a href="index.html" class="navbar-brand h1 brand">Student <span class="IS">IS</span></a>
         
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -34,11 +35,110 @@
 
     <!--Navbar end-->
 
+    <!--Body start-->
+    
+    <div class="container-fluid homepage-jumbotron">
+        <div class="row">
+            <div class="col">
+                <div class="body-title">
+                    <p>Contact Us</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 offset-xs-1 ">
+                <div class="body-text">
+                    <p>You can contact us at - 
+                        <br>
+                        <i class="fa fa-phone"></i> :+91 0000000000
+                        <br>
+                        <i class="fa fa-envelope"></i> :<a href="mailto: studis@gmail.com"> studis@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        
+        <div class="row">
+            <div class="col">
+                <div class="body-title">
+                    <p>Send us your feedback</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            
+            <div class="body-text col-12 col-md-10">
+                <form >
+                    <div class="form-group row">
+                        <label for="firstname" class="col-md-2 col-form-label">First Name</label>
+                        <div class="col-md-10" >
+                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lastname" class="col-md-2 col-form-label">Last Name</label>
+                        <div class="col-md-10" >
+                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                    <label for="telnum" class="col-12 col-md-2 col-form-label">Contact Tel.</label>
+                        
+                        <div class="col-7 col-md-10">
+                            <input type="tel" class="form-control" id="telnum" name="telnum" placeholder="Tel. Number">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                    <label for="email" class="col-md-2 col-form-label">Email</label>
+                        <div class="col-md-10" >
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+
+                        </div>
+                    </div>    
+                    <div class="form-group row">
+                        <div class="col-md-6 offset-md-2">
+                            <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="approve" id="approve" value="">
+                            <label for="approve" class="form-check-label">
+                                <strong>May we contact you?</strong>
+                            </label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                        <label for="feedback" class="col-md-2 col-form-label">Your Feedback</label>
+                            <div class="col-md-10" >
+                                <textarea class="form-control" id="feedback" name="feedback" rows="12" ></textarea>
+    
+                            </div>
+                    </div>  
+                    <div class="form-group row">
+                        <div class="offset-md-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">
+                                Send Feedback
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!--Body end-->
+
     <!--Footer start-->
     
     <footer class="bg-light text-center text-lg-start">
         <!-- Copyright -->
-        <div class="text-center p-3 text-light" style="background-color: #191919;">
+        <div class="text-center p-4 m-0 text-light" style="background-color: #191919;">
           &copy; 2022 : All rights reserved.
         </div>
         <!-- Copyright -->

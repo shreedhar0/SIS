@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+		
+		<title>Register</title>
+		
+	
+		<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+		<script src="bootstrap/js/script.js"></script>
+
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row justify-content-center" id="header">
+				<h1>Registration Form</h1>
+			</div>
+				<form name="register" method="post" onsubmit="validation()">
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="name">Name :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="text" name="name" class="form-control" placeholder="Enter name here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="address">Address :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<textarea class="form-control " name="address" rows="3" placeholder="Enter address here..." required></textarea>
+						</div>	
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="email">Email Address :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="email" name="email" class="form-control" placeholder="Enter your email here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="pass">Password :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="password" name="password" class="form-control" placeholder="Enter your password here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="contact">Contact Number :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="text" name="contact" class="form-control" placeholder="Enter your contact here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="select-course">Select Your Course :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<select class="form-control" scrolling="yes">
+								<option selected>BTech</option>
+								<option>BE</option>
+								<option>BPharm</option>
+								<option>BCS</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="comment">Comment :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<textarea class="form-control " name="comment" rows="3" placeholder="Add comment here..." required></textarea>
+						</div>
+					</div>
+					
+					<div class="form-group row" id="button">
+						<div class="col col-sm-1 offset-md-5">
+							<input type="submit" class="btn btn-success btn-block" value="Submit">
+						</div>
+						<div class="col col-sm-1">
+							<button type="button" class="btn btn-danger btn-block" onclick="reset()">Reset</button>
+						</div>
+					</div>
+				<form>
+		</div>
+	</body>
+</html>
