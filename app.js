@@ -1,3 +1,5 @@
+//Required modules
+
 const mysql = require('mysql');
 const express = require('express');
 const session = require('express-session');
@@ -11,14 +13,14 @@ const urlencoded = require('body-parser/lib/types/urlencoded');
 const app = express();
 const port = 3000
 
+//Connection to MySQL
+
 const connection = mysql.createConnection({
   host : 'localhost',
   user : 'root',
   password : 'password',
   database : 'sis'
 });
-
-
 
 app.use(express.json());
 
@@ -34,19 +36,16 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended : true}));
 
+//Starting point of a project
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
   res.end();
 });
 
+//Routes 
 app.get('/dashboard-student', function(req , res){
   res.render(__dirname + '/src/dashboard-student');
-  //if (request.session.loggedin) {
-  //  res.render(__dirname + '/src/dashboard-student');
-  //}else{
-  //  response.send('Please login to view this page!');
-  //}
   res.end();
 });
 
@@ -69,7 +68,8 @@ app.get('/src/register.html', (req, res) => {
   res.sendFile(__dirname + '/src/register.html');
 });
 
-// Connecting to database
+//Inserting registration form in database
+
 app.post('/src/register.html', function(req ,res){
   var name = req.body.name;
   var address = req.body.address;
@@ -106,33 +106,12 @@ app.post('/src/login.html' ,function(req , res){
       res.redirect('/dashboard-student');
     }else{
       res.redirect('/src/login.html');
-  //    res.send('Please enter correct PRN and password.');
     }
     res.end();
   });
-
-
-  //if(prn && password){
-  //  connection.connect(function(error){
-  //    if (error) throw error;
-  //      var sql = 'SELECT * FROM userinfo WHERE prn=? AND password=?';
-  //      connection.query(sql, [prn, password], function(error, results){
-  //        if(error) throw error;
-  //        if(results.length > 0){
-  //          request.session.loggedin = true;
-  //          request.session.username = prn;
-  //          response.redirect('/dashboard-student');
-  //        }else{
-  //          response.send('Incorrect prn and pass.')
-  //        }
-  //        response.end();
-  //      });
-  //    });
-  //}else{
-  //  response.send('Please enter Username and Password!');
-	//	response.end();
-  //}
 });
+
+//Port for project
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
