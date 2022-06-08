@@ -6,13 +6,14 @@ function validation(){
         alert("Password must be at least 8 characters.");
     }
 
-    if(password.length < 9){
-        alert("Password must be at least 8 characters.");
+    if(password.length < 6){
+        alert("Password must be at least 6 characters.");
         return false;
     }
     
-    else if(isNaN(contact)){
-        alert("Add numbers here.");
+    else if(contact.length != 10){
+        
+        alert("Add correct contact number.");
         return false;
     }
 

@@ -104,6 +104,14 @@ a{
 
 /* Jumbotron end*/
 
+/*ejs Jumbotron*/
+.body-ejs{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+
+/*ejs Jumbotron*/
+
 /* Footer start */
 footer {
     margin-bottom: 0%;

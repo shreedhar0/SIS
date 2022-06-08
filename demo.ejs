@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Table</h2>
+    <table border="1px" width="100%">
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>PRN</th>
+            <th>Password</th>
+            <th>Contacts</th>
+            <th>Course</th>
+        </tr>
+        <% if(studentdata.length > 0){ %>
+            <% for(var i = 0; i < studentdata.length; i++){ %>
+                <tr>
+                    <td>
+                        <%- studentdata[i].id %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].full_name %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].address %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].email %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].prn %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].password %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].contact %>
+                    </td>
+                    <td>
+                        <%- studentdata[i].course %>
+                    </td>
+                </tr>
+            <% } %>
+        <% }else{ %>
+            <h3>Database is empty!!</h3>
+        <% } %>
+    </table>
+</body>
+</html>
