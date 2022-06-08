@@ -10,7 +10,9 @@ const { request } = require('http');
 const { response } = require('express');
 const urlencoded = require('body-parser/lib/types/urlencoded');
 const res = require('express/lib/response');
+const cookieParser = require("cookie-parser");
 
+const oneDay = 1000 * 60 * 60 * 24;
 const app = express();
 const port = 3000;
 
@@ -38,6 +40,25 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended : true}));
 
+app.use(session({
+  secret : "key",
+  saveUninitialized : true,
+  cookie :{maxAge : oneDay},
+  resave : false
+}));
+
+app.use(cookieParser());
+
+app.get('/session',function(req, res){
+  if(req.session.count){
+    req.session.count ++;
+    res.send("Count = " + req.session.count);
+  }else{
+    req.session.count = 1;
+    res.send("Count =" + req.session.count);
+  }
+});
+
 //Starting point of a project
 
 app.get('/', (req, res) => {
@@ -47,8 +68,13 @@ app.get('/', (req, res) => {
 
 //Routes 
 app.get('/src/dashboard-student', function(req , res){
-    res.render(__dirname + '/src/dashboard-student');
-    res.end();
+  if(req.session.loggedin){
+    connection.query("SELECT full_name FROM userinfo WHERE prn=? AND password=?",[req.session.PRN, req.session.PASSWORD],function(error, results){
+      res.render(__dirname + '/src/dashboard-student', {studentdata : results});
+    })
+  }else{
+    res.sendFile(__dirname+'/src/login.html');
+  }
 });
 
 app.get('/src/grades', function(req , res){
@@ -98,35 +124,33 @@ app.get('/src/login.html', function(req,res){
 });
 
 //Login authintication
-app.post('/src/login.html' ,function(req , res){
+app.post('/auth' ,function(req , res){
   var prn = req.body.prn;
   var password = req.body.password;
+  
   connection.query('SELECT * FROM userinfo WHERE prn=? AND password=?',[prn , password],function(error, results, fields){
     if (error) throw error;
     if(results.length > 0){
+      req.session.PRN = prn;
+      req.session.PASSWORD = password;
+      req.session.loggedin = true;
       res.redirect('/src/dashboard-student');
+             
     }else{
       res.redirect('/src/login.html');
     }
   });  
 });
 
-
 //Setting up profiles
 app.get('/src/profile', function(req, res){
-    connection.query('SELECT * FROM userinfo WHERE prn =? ;',[1],function(error, results){
+    connection.query('SELECT * FROM userinfo WHERE prn =? AND password=?;',[req.session.PRN, req.session.PRN],function(error, results){
         if(error) throw error;
-        res.render(__dirname + '/src/profile', {studentdata : results});
+        res.render(__dirname + '/src/profile',{ studentdata : results});
         res.end();
     });
 });
-app.post('/src/profile', function(req, res){
-  connection.query('SELECT * FROM userinfo WHERE prn = 1;',function(error, results){
-      if(error) throw error;
-      res.render(__dirname + '/src/profile', {studentdata : results});
-      res.end();
-  });
-});
+
 
 
 //Port for project

@@ -30,21 +30,6 @@
                     <br>
                     <h2 class="text-center ">Your profile</h2>
                     <br>
-<!--                    <form action="" method="post">
-                        <div class="form-group row">
-                            <div class="col col-sm-2 offset-md-3">
-                                <label for="name">PRN :</label>
-                            </div>
-                            <div class="col col-sm-4 ">
-                                <input type="text" name="prn" class="form-control" placeholder="Enter PRN here..." required>
-                            </div>
-                            <div class=" col-sm-2">
-                                <input type="submit" value="Submit">
-                            </div>
-                        </div>
-
-                    </form>
-                --> <br>
                     <table border="1px" width="100%">
                         <tr>
                             <th>ID</th>
@@ -52,7 +37,6 @@
                             <th>Address</th>
                             <th>Email</th>
                             <th>PRN</th>
-                            <th>Password</th>
                             <th>Contacts</th>
                             <th>Course</th>
                         </tr>
@@ -75,9 +59,7 @@
                                     <td>
                                         <%- studentdata[i].prn %>
                                     </td>
-                                    <td>
-                                        <%- studentdata[i].password %>
-                                    </td>
+                                    
                                     <td>
                                         <%- studentdata[i].contact %>
                                     </td>
