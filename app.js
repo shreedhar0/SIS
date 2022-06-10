@@ -11,6 +11,7 @@ const { response } = require('express');
 const urlencoded = require('body-parser/lib/types/urlencoded');
 const res = require('express/lib/response');
 const cookieParser = require("cookie-parser");
+const { contentType } = require('express/lib/response');
 
 const oneDay = 1000 * 60 * 60 * 24;
 const app = express();
@@ -49,16 +50,6 @@ app.use(session({
 
 app.use(cookieParser());
 
-app.get('/session',function(req, res){
-  if(req.session.count){
-    req.session.count ++;
-    res.send("Count = " + req.session.count);
-  }else{
-    req.session.count = 1;
-    res.send("Count =" + req.session.count);
-  }
-});
-
 //Starting point of a project
 
 app.get('/', (req, res) => {
@@ -75,6 +66,10 @@ app.get('/src/dashboard-student', function(req , res){
   }else{
     res.sendFile(__dirname+'/src/login.html');
   }
+});
+
+app.get('/src/index.html', function(req, res){
+  res.sendFile(__dirname+'/src/index.html');
 });
 
 app.get('/src/grades', function(req , res){
@@ -99,6 +94,7 @@ app.get('/src/register.html', (req, res) => {
 //Inserting registration form in database
 
 app.post('/src/register.html', function(req ,res){
+  res.setHeader('Content-Type', 'text/html');
   var name = req.body.name;
   var address = req.body.address;
   var email = req.body.email;
@@ -106,16 +102,39 @@ app.post('/src/register.html', function(req ,res){
   var password = req.body.password;
   var contact = req.body.contact;
   var course = req.body.course;
-
-  connection.connect(function(error){
-    if(error) throw error;
-    var sql = "INSERT INTO userinfo (full_name ,address, email, prn, password, contact, course) VALUES ('"+name+"','"+address+"','"+email+"','"+prn+"','"+password+"','"+contact+"','"+course+"')";
-    connection.query(sql, function(error, result){
-      if (error) throw error;
-      res.redirect('/src/login.html');
-    });
-  });
   
+//Registration with email and prn authintication
+
+  if(password.length > 7 && contact.length == 10 ){
+    connection.query("SELECT COUNT(*) AS cnt FROM userinfo WHERE email = ?" , [email] , function(error , results){
+      if(error){
+         console.log(err);
+      }else{
+            if(results[0].cnt > 0){  
+              res.end(`This email is already in use, try with another email. <br><a href="/src/register.html">Click me to register again..</a>`);  
+            }else{
+              connection.query("SELECT COUNT(*) AS cnt FROM userinfo WHERE prn = ?" , [prn] , function(error , results){
+                if(error){
+                  console.log(err);
+                }else{
+                      if(results[0].cnt > 0){  
+                        res.end(`This prn is already in use, try with another prn. <br><a href="/src/register.html">Click me to register again..</a>`);  
+                      }else{
+                        var sql = "INSERT INTO userinfo (full_name ,address, email, prn, password, contact, course) VALUES ('"+name+"','"+address+"','"+email+"','"+prn+"','"+password+"','"+contact+"','"+course+"')";
+                        connection.query(sql, function(error, result){
+                          if (error) throw error;
+                          res.redirect('/src/login.html');
+                        });
+                      }
+                }
+              });
+            }
+        }
+  });
+  }else{
+      res.end(`Password must be at least 8 characters and contact number must be 10 characters long ..<br><a href="/src/register.html">Click me to register again..</a>`);  
+  }
+    
 });
 
 app.get('/src/login.html', function(req,res){
@@ -124,27 +143,30 @@ app.get('/src/login.html', function(req,res){
 });
 
 //Login authintication
-app.post('/auth' ,function(req , res){
+app.post('/authlogin' ,function(req , res){
   var prn = req.body.prn;
   var password = req.body.password;
-  
-  connection.query('SELECT * FROM userinfo WHERE prn=? AND password=?',[prn , password],function(error, results, fields){
-    if (error) throw error;
-    if(results.length > 0){
-      req.session.PRN = prn;
-      req.session.PASSWORD = password;
-      req.session.loggedin = true;
-      res.redirect('/src/dashboard-student');
-             
-    }else{
-      res.redirect('/src/login.html');
-    }
-  });  
+  if(prn && password){
+    connection.query('SELECT * FROM userinfo WHERE prn=? AND password=?',[prn , password],function(error, results, fields){
+      if (error) throw error;
+      if(results.length > 0){
+        req.session.PRN = prn;
+        req.session.PASSWORD = password;
+        req.session.loggedin = true;
+        res.redirect('/src/dashboard-student');
+              
+      }else{
+        res.redirect('/src/login.html');
+      }
+    });  
+  }else{
+    res.redirect('/src/login.html');
+  }
 });
 
 //Setting up profiles
 app.get('/src/profile', function(req, res){
-    connection.query('SELECT * FROM userinfo WHERE prn =? AND password=?;',[req.session.PRN, req.session.PRN],function(error, results){
+    connection.query('SELECT * FROM userinfo WHERE prn =? AND password=?;',[req.session.PRN, req.session.PASSWORD],function(error, results){
         if(error) throw error;
         res.render(__dirname + '/src/profile',{ studentdata : results});
         res.end();
