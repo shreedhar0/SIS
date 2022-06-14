@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta http-equiv="x-ua-compatible" content="ie=edge">
+		
+		<title>Update-Student</title>
+		
+	
+		<link rel="stylesheet" type="text/css" href="/dist/css/bootstrap.min.css">
+   		<link rel="stylesheet" type="text/css" href="/dist/css/styles.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+		<script src="/dist/js/script.js"></script>
+
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+			  <li class="breadcrumb-item " aria-current="page"><a href="index.html">Home</a></li>
+			  <li class="breadcrumb-item bread-active" aria-current="page">Register</li>
+	
+			</ol>
+		</nav>
+
+		<div class="container">
+			<div class="row justify-content-center" id="header">
+				<h1>Update Student</h1>
+			</div>
+				<form name="update-student"  method="post"  onsubmit="validation()">
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="name">Full Name :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="text" name="name" class="form-control" value="<%- studentdata[0].full_name %>" placeholder="Enter name here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="address">Address :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<textarea class="form-control " value="<%- studentdata[0].address %>" name="address" rows="3" placeholder="Enter address here..." required></textarea>
+						</div>	
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="email">Email Address :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="email" name="email" class="form-control" value="<%- studentdata[0].email %>" placeholder="Enter your email here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="contact">PRN :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="number" name="prn" value="<%- studentdata[0].prn %>" class="form-control" placeholder="Enter your contact here..." required>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="pass">Password :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="password" name="password" value="<%- studentdata[0].password %>" class="form-control" placeholder="Enter your password here..." required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="contact">Contact Number :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<input type="number" name="contact" class="form-control" value="<%- studentdata[0].contact %>" placeholder="Enter your contact here..." maxlength="10" required>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<div class="col col-sm-2 offset-md-3">
+							<label for="select-course">Select Your Course :</label>
+						</div>
+						<div class="col col-sm-4 ">
+							<select class="form-control" name="course" scrolling="yes">
+								<option selected>BTech</option>
+								<option>BE</option>
+								<option>BPharm</option>
+								<option>BCS</option>
+							</select>
+						</div>
+					</div>
+										
+					<div class="form-group row" id="button">
+						<div class="col col-sm-1 offset-md-5">
+							<input type="submit" class="btn btn-success btn-block" value="Update">
+						</div> 
+						<div class="col col-sm-1">
+							<button type="button" class="btn btn-danger btn-block" onclick="reset()">Reset</button>
+						</div>
+					</div>
+					
+				<form>
+		</div>
+	</body>
+</html>

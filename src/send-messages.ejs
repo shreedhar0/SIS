@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/styles.css">
+
+    <title>Send Messages</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-2 text-center vh-100 sidebar ">
+                <div class="sidebar-items">
+                    <div class="sidebar-item"><a href="/src/update" class="sidebar-link ">UPDATE STUDENTS</a></div>
+                    <div class="sidebar-item "><a href="/src/fill-grades" class="sidebar-link">FILL GRADES</a></div>
+                    <div class="sidebar-item dashboard-active"><a href="#" class="sidebar-link">SEND MESSAGES</a></div>
+                </div>
+                <div class="logout">
+                    <a href="/src/login.html" class="log-out">LOGOUT</a>
+                </div>
+            </div>
+            <div class="col dashboard-nav ">
+                <a href="/src/index.html" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
+                <div class="jumbotron body-ejs">
+                    <h3>Write a message for users...</h3>
+                    <br><br>
+                    <form name="grades" action="" method="post" >
+                    <table  border="1px solid black" height="320px" width="100%">
+                        <tr class="table-header">
+                            <th width="80%" class="text-center">Write your message here ..</th>
+                            <th width="20%">Date</th>
+                        </tr>                         
+                        <tr class="table-body">
+                            <td class="message">
+                               <textarea name="message"  cols="90" rows="10" required>Hello students !! This is admin.. </textarea>
+                            </td>
+                            <td>
+                                <input type="date" name="date" required>
+                            </td>
+                        </tr>
+                           
+                    </table>
+                    <br>
+                    <input type="submit" class="btn btn-success" value="Send Message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js "></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -193,3 +193,23 @@ div{
 
 /* dashboard-student end */
 
+/*Admin*/
+.admin-instructions{
+    padding-top: 3%;
+    padding-left: 5%;
+}
+.table-header{
+    background-color: #d7d7d7;
+    height: 15%;
+}
+.table-body{
+    padding-top: 10px;
+    background-color: #e6e6e6;
+}
+.table-id{
+    padding-left: 10px;
+}
+.message{
+    padding-left: 3%;  
+}
+/*Admin End*/

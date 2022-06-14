@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/styles.css">
+
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-2 text-center vh-100 sidebar ">
+                <div class="sidebar-items">
+                    <div class="sidebar-item"><a href="/src/update" class="sidebar-link ">UPDATE STUDENTS</a></div>
+                    <div class="sidebar-item"><a href="/src/fill-grades" class="sidebar-link">FILL GRADES</a></div>
+                    <div class="sidebar-item"><a href="/src/send-messages" class="sidebar-link">SEND MESSAGES</a></div>
+                </div>
+                <div class="logout">
+                    <a href="/src/login.html" class="log-out">LOGOUT</a>
+                </div>
+            </div>
+            <div class="col dashboard-nav ">
+                <a href="/src/index.html" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
+                <div class="jumbotron body-ejs">
+                    <h3>Hello Admin  !!</h3>
+                    <h4>Welcome back  !!</h4>
+                    <br><br>
+                    <div class="row">
+                        <h4>User Manual for admin .</h4>
+                        <ol class="admin-instructions">
+                            <li>With help of this Admin Manual you can do certain things as described below :</li>
+                            <li>Admin can update students inforamation.</li>
+                            <li>Admin can delete students</li>
+                            <li>Admin can assign grades to students.</li>
+                            <li>Admin can send messages to inform students.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js "></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>
