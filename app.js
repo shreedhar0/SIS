@@ -57,7 +57,12 @@ app.get('/', (req, res) => {
   res.end();
 });
 
-//Routes 
+app.get('/src/index.html', function(req, res){
+  res.sendFile(__dirname+'/src/index.html');
+});
+
+//Routes for client-side
+
 app.get('/src/dashboard-student', function(req , res){
   if(req.session.loggedin){
     connection.query("SELECT full_name FROM userinfo WHERE prn=? AND password=?",[req.session.PRN, req.session.PASSWORD],function(error, results){
@@ -68,10 +73,6 @@ app.get('/src/dashboard-student', function(req , res){
   }
 });
 
-app.get('/src/index.html', function(req, res){
-  res.sendFile(__dirname+'/src/index.html');
-});
-
 app.get('/src/about.html', function(req, res){
   res.sendFile(__dirname+'/src/about.html');
 });
@@ -80,19 +81,27 @@ app.get('/src/contact.html', function(req, res){
   res.sendFile(__dirname+'/src/contact.html');
 });
 
+//Routes for server-side
+
 app.get('/src/grades', function(req , res){
-  res.render(__dirname + '/src/grades');
-  res.end();
+  var sql = "SELECT * FROM grades WHERE prn = ?";
+  connection.query(sql,[req.session.PRN], function(error, results){
+    if(error) throw error;
+    if(results.length == 0){
+      res.send(`Grades have not filled by admin yet.<br><a href="/src/dashboard-student">Go back to dashboard.</a>`);
+    }else{
+      res.render(__dirname + '/src/grades',{studentdata : results});
+    }
+  });
 });
 
 app.get('/src/messages', function(req , res){
-  res.render(__dirname + '/src/messages');
-  res.end();
-});
+  var sql = "SELECT * FROM messages";
+  connection.query(sql, function(error, results){
+    if(error) throw error;
+    res.render(__dirname + '/src/messages', {studentdata : results});
 
-app.get('/src/preferences', function(req , res){
-  res.render(__dirname + '/src/preferences');
-  res.end();
+  });
 });
 
 app.get('/src/register.html', (req, res) => {
@@ -151,6 +160,7 @@ app.get('/src/login.html', function(req,res){
 });
 
 //Login authintication
+
 app.post('/authlogin' ,function(req , res){
   var prn = req.body.prn;
   var password = req.body.password;
@@ -178,6 +188,7 @@ app.post('/authlogin' ,function(req , res){
 });
 
 //Posting contactus form data in db
+
 app.post('/src/contact.html', function(req, res){
   res.setHeader('Content-Type', 'text/html');
   var fname = req.body.firstname;
@@ -192,8 +203,8 @@ app.post('/src/contact.html', function(req, res){
   });
 });
 
-
 //Setting up profiles
+
 app.get('/src/profile', function(req, res){
     connection.query('SELECT * FROM userinfo WHERE prn =? AND password=?;',[req.session.PRN, req.session.PASSWORD],function(error, results){
         if(error) throw error;
@@ -203,13 +214,16 @@ app.get('/src/profile', function(req, res){
 });
 
 //Admin
+
 app.get('/src/dashboard-admin', function(req, res){
-  res.setHeader('content-type' ,'text/html');
-  var sql = "INSERT INTO grades(prn, name) SELECT prn, full_name FROM userinfo";
-  connection.query(sql, function(error, results){
-    if(error ) throw error;
-    res.render(__dirname + '/src/dashboard-admin');
-  });
+ 
+    var sql = "INSERT INTO grades(prn, name) SELECT prn, full_name FROM userinfo";
+    connection.query(sql, function(error, results){
+      if(error ) throw error;
+      res.render(__dirname + '/src/dashboard-admin');
+    });
+  
+  
 });
 
 app.get('/src/update', function(req, res){
@@ -257,7 +271,6 @@ app.post('/src/update-student', function(req, res){
 });
 
 //Delete student
-
 
 app.get('/src/delete-student', function(req, res){
   res.setHeader('content-type', 'text/html')
@@ -326,5 +339,5 @@ app.post('/src/send-messages', function(req,res){
 //Port for project
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App is listening on port ${port}`)
 })

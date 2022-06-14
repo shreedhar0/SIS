@@ -65,12 +65,13 @@ a{
 /*Breadcrumb*/
 .breadcrumb{
     background-color: var(--body);
-    height: 30px;
-    width: 400px;
+    height: 40px;
+    width: 300px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 .breadcrumb-item{
+    margin-top: 6px;
     margin-left: 20px;
 
 }
@@ -108,6 +109,7 @@ a{
 .body-ejs{
     margin-top: 30px;
     margin-left: 10px;
+    
 }
 
 /*ejs Jumbotron*/
@@ -135,6 +137,12 @@ div{
 #button{
     margin-top: 20px;
     
+}
+.login-register{
+    background-color: #d7d7d7;
+}
+label{
+    font-size: 18px;
 }
 /* Registration end*/
 
@@ -173,7 +181,7 @@ div{
     border-radius: 10px;
 }
 .logout{
-    margin-top: 100%;
+    margin-top: 150%;
 
 }
 .log-out{
@@ -213,3 +221,4 @@ div{
     padding-left: 3%;  
 }
 /*Admin End*/
+

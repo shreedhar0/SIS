@@ -18,7 +18,6 @@
                     <div class="sidebar-item"><a href="/src/profile" class="sidebar-link ">PROFILE</a></div>
                     <div class="sidebar-item"><a href="/src/grades" class="sidebar-link">GRADES</a></div>
                     <div class="sidebar-item dashboard-active"><a href="#" class="sidebar-link ">MESSAGES</a></div>
-                    <div class="sidebar-item"><a href="/src/preferences" class="sidebar-link">PREFERENCES</a></div>
                 </div>
                 <div class="logout">
                     <a href="/src/login.html" class="log-out">LOGOUT</a>
@@ -26,6 +25,36 @@
             </div>
             <div class="col dashboard-nav ">
                 <a href="/src/dashboard-student" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
+                <div class="jumbotron body-ejs">
+                    <br>
+                    <h2 class="text-center ">Messages from admin</h2>
+                    <br>
+                    <hr>
+                    <table  border="1px solid black"  width="100%">
+                        <tr class="table-header">
+                            <th width="5%" class="table-id">ID</th>
+                            <th width="75%" class="text-center">Messages</th>
+                            <th width="20%">Date</th>
+                        </tr>                         
+                        <% if(studentdata.length > 0){ %>
+                            <% for(var i = 0; i < studentdata.length; i++){ %>
+                                <tr class="table-body">
+                                    <td class="table-id">
+                                        <%- [i+1] %>
+                                    </td>
+                                    <td>
+                                        <%- studentdata[i].message %>
+                                    </td>
+                                    <td>
+                                        <%- studentdata[i].date %>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        <% }else{ %>
+                            <h3>No messages here...</h3>
+                        <% } %>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

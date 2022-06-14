@@ -18,7 +18,6 @@
                     <div class="sidebar-item"><a href="/src/profile" class="sidebar-link ">PROFILE</a></div>
                     <div class="sidebar-item"><a href="/src/grades" class="sidebar-link">GRADES</a></div>
                     <div class="sidebar-item"><a href="/src/messages" class="sidebar-link">MESSAGES</a></div>
-                    <div class="sidebar-item"><a href="/src/preferences" class="sidebar-link">PREFERENCES</a></div>
                 </div>
                 <div class="logout">
                     <a href="/src/login.html" class="log-out">LOGOUT</a>
@@ -27,8 +26,16 @@
             <div class="col dashboard-nav ">
                 <a href="/src/index.html" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
                 <div class="jumbotron body-ejs">
+                    <br>
                     <h3>Hello There!!</h3>
                     <h4>Welcome back..  <%= studentdata[0].full_name %> !!</h4>
+                    
+                    <hr>
+                    
+                    <h5>
+                        You can view your profile, check your grades and view messages sent by
+                        admin by navigations positioned at left of your screen.
+                    </h5>
                 </div>
             </div>
         </div>

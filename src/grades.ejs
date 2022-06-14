@@ -18,7 +18,6 @@
                     <div class="sidebar-item"><a href="profile" class="sidebar-link ">PROFILE</a></div>
                     <div class="sidebar-item dashboard-active"><a href="#" class="sidebar-link ">GRADES</a></div>
                     <div class="sidebar-item"><a href="messages" class="sidebar-link">MESSAGES</a></div>
-                    <div class="sidebar-item"><a href="preferences" class="sidebar-link">PREFERENCES</a></div>
                 </div>
                 <div class="logout">
                     <a href="/src/login.html" class="log-out">LOGOUT</a>
@@ -26,6 +25,59 @@
             </div>
             <div class="col dashboard-nav ">
                 <a href="/src/dashboard-student" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
+                <div class="jumbotron body-ejs">
+                    <br>
+                    <h2 class="text-center ">My Grades</h2>
+                    <br>
+                    <hr>
+                        
+                        <table  border="1px solid black" height="320px" width="100%">
+                            <tr class="table-header ">
+                                <th class="text-center">Subjects</th>
+                                <th>Marks out of 100</th>
+                            </tr>                        
+                            <tr class="table-body">
+                                <td class="table-id">
+                                    Design and Analysis of Algorithms
+                                </td>
+                                <td>
+                                    <%- studentdata[0].daa %>
+                                </td>
+                            </tr>
+                            <tr class="table-body">
+                                <td class="table-id">
+                                    Operating Systems
+                                </td>
+                                <td>
+                                    <%- studentdata[0].os %>
+                                </td>
+                            </tr>
+                            <tr class="table-body">
+                                <td class="table-id">
+                                    Digital Logic and Designing Microprocessors
+                                </td>
+                                <td>
+                                    <%- studentdata[0].dldm %>
+                                </td>
+                            </tr>
+                            <tr class="table-body">
+                                <td class="table-id">
+                                    Probability Theory and Random Processes
+                                </td>
+                                <td>
+                                    <%- studentdata[0].ptrp %>
+                                </td>
+                            </tr>
+                            <tr class="table-body">
+                                <td class="table-id">
+                                    Basic Human Rights
+                                </td>
+                                <td>
+                                    <%- studentdata[0].bhr %>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
             </div>
         </div>
     </div>

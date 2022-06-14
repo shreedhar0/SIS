@@ -18,7 +18,6 @@
                     <div class="sidebar-item dashboard-active"><a href="#" class="sidebar-link ">PROFILE</a></div>
                     <div class="sidebar-item"><a href="/src/grades" class="sidebar-link">GRADES</a></div>
                     <div class="sidebar-item"><a href="/src/messages" class="sidebar-link">MESSAGES</a></div>
-                    <div class="sidebar-item"><a href="/src/preferences" class="sidebar-link">PREFERENCES</a></div>
                 </div>
                 <div class="logout">
                     <a href="/src/login.html" class="log-out">LOGOUT</a>
@@ -28,11 +27,12 @@
                 <a href="/src/dashboard-student" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
                 <div class="jumbotron body-ejs">
                     <br>
-                    <h2 class="text-center ">Your profile</h2>
+                    <h2 class="text-center ">My profile</h2>
                     <br>
-                    <table border="1px" width="100%">
-                        <tr>
-                            <th>ID</th>
+                    <hr>
+                    <table border="1px" height="100px" width="100%">
+                        <tr class="table-header">
+                            <th class="table-id">ID</th>
                             <th>Full Name</th>
                             <th>Address</th>
                             <th>Email</th>
@@ -40,11 +40,10 @@
                             <th>Contacts</th>
                             <th>Course</th>
                         </tr>
-                        <hr>
                         <% if(studentdata.length > 0){ %>
                             <% for(var i = 0; i < studentdata.length; i++){ %>
-                                <tr>
-                                    <td>
+                                <tr class="table-body">
+                                    <td class="table-id">
                                         <%- studentdata[i].id %>
                                     </td>
                                     <td>
@@ -69,7 +68,7 @@
                                 </tr>
                             <% } %>
                         <% }else{ %>
-                            <h3>Database is empty!!</h3>
+                            <h4>Database is empty!!</h4>
                         <% } %>
                     </table>
                 </div>
