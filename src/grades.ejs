@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-sm-2 text-center vh-100 sidebar ">
+            <div class="col-12 col-sm-2 text-center sidebar ">
                 <div class="sidebar-items">
                     <div class="sidebar-item"><a href="profile" class="sidebar-link ">PROFILE</a></div>
                     <div class="sidebar-item dashboard-active"><a href="#" class="sidebar-link ">GRADES</a></div>
@@ -24,13 +24,19 @@
                 </div>
             </div>
             <div class="col dashboard-nav ">
-                <a href="/src/dashboard-student" class="navbar-brand h1 brand dashboard-brand">Student <span class="IS">IS</span></a>
+                <br>
+                <a href="/src/dashboard-student" class="navbar-brand h1 brand dashboard-brand">STUDENT's INFORMATION</a>
                 <div class="jumbotron body-ejs">
                     <br>
                     <h2 class="text-center ">My Grades</h2>
                     <br>
                     <hr>
-                        
+                        <div class="studentinfo">
+                            <h5 class="float-left">Student Name : <%= studentdata[0].name %></h5>
+                            <h5 class="">Class : SY CSE</h5>
+                            <h5>PRN : <%= studentdata[0].prn%></h5>
+                            <br>
+                        </div>
                         <table  border="1px solid black" height="320px" width="100%">
                             <tr class="table-header ">
                                 <th class="text-center">Subjects</th>

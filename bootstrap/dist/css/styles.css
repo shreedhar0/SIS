@@ -25,6 +25,7 @@ a{
 .navbar-brand{
     margin-left: 6%;
 }
+/*
 .IS{
     background-color: var(--lightdark);
     padding-top: 5px;
@@ -33,6 +34,7 @@ a{
     padding-right: 10px;
     border-radius: 4px;
 }
+*/
 .navbar-nav{
     margin-right: 6%;
 }
@@ -54,9 +56,11 @@ a{
 
 .brand{
     font-size: 22px;
-    letter-spacing: 3px;
-    display: flex !important;
+    letter-spacing: 2px;
+    /*display: flex !important;
     align-items: center !important;
+    */
+    vertical-align: middle;
 }
 
 
@@ -150,6 +154,7 @@ label{
 
 .sidebar{
     background-color: var(--lightdark);
+    height: 700px;
 
 }
 .sidebar-items{
@@ -160,8 +165,8 @@ label{
     height: 80px;
 }
 .dashboard-brand{
-    margin-top: 15px;
-    margin-left: 43%;
+    margin-left: 37%;
+    
 }
 .sidebar-link{
     text-decoration: none;
