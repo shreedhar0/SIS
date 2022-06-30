@@ -35,7 +35,7 @@ app.set('view engine','ejs');
 
 app.use(express.static('bootstrap'));
 
-app.use(express.static('src'));
+app.use(express.static(__dirname +'/src'));
 
 app.use(bodyParser.json());
 
@@ -179,7 +179,8 @@ app.post('/authlogin' ,function(req , res){
         res.redirect('/src/dashboard-student');
               
       }else{
-        res.redirect('/src/login.html');
+        res.send(`PRN or password is incorrect. Please enter correct values. <br><a href="/src/login.html">Click here to login again.</>`);
+        //res.redirect('/src/login.html');
       }
     });  
   }else{
@@ -217,7 +218,7 @@ app.get('/src/profile', function(req, res){
 
 app.get('/src/dashboard-admin', function(req, res){
  
-    var sql = "INSERT INTO grades(prn, name) SELECT prn, full_name FROM userinfo";
+    var sql = "INSERT INTO grades(prn, name) SELECT DISTINCT prn, full_name FROM userinfo WHERE prn NOT IN( SELECT prn FROM grades)";
     connection.query(sql, function(error, results){
       if(error ) throw error;
       res.render(__dirname + '/src/dashboard-admin');

@@ -35,6 +35,7 @@ a{
     border-radius: 4px;
 }
 */
+
 .navbar-nav{
     margin-right: 6%;
 }
@@ -82,6 +83,9 @@ a{
 /*Breadcrumb-end*/
 
 /* Jumbotron start*/
+.dashboard-image{
+    background-image: url('dashboard-image.jpg');
+}
 
 .homepage-jumbotron{
     color: var(--dark);
